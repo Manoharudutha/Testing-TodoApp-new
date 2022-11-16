@@ -8,10 +8,12 @@ const {
   dueLater,
   toDisplayableList,
 } = todoList();
+
 const dateToday = new Date();
 const formattedDate = (d) => {
   return d.toISOString().split("T")[0];
 };
+
 const today = formattedDate(dateToday);
 
 describe("Todo Application Test Suite", () => {
@@ -20,14 +22,8 @@ describe("Todo Application Test Suite", () => {
       return d.toISOString().split("T")[0];
     };
 
-    var dateToday = new Date();
+    const dateToday = new Date();
     const today = formattedDate(dateToday);
-    const yesterday = formattedDate(
-      new Date(new Date().setDate(dateToday.getDate() - 1))
-    );
-    const tomorrow = formattedDate(
-      new Date(new Date().setDate(dateToday.getDate() + 1))
-    );
 
     add({
       title: "Todo Application Test",
@@ -62,13 +58,13 @@ describe("Todo Application Test Suite", () => {
   });
 
   test("Should add a new item", () => {
-    const todosCounts = all.length;
+    const todosCount = all.length;
     add({
       title: "wants to submit book in library",
       completed: false,
       dueDate: new Date().toLocaleDateString("en-CA"),
     });
-    expect(all.length).toBe(todosCounts + 1);
+    expect(all.length).toBe(todosCount + 1);
   });
 
   test("Should update a completed(mark as read) of given item", () => {
